@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerGoals (CG) — Discover Every Course Your Future Can Hold</title>
+<meta name="description" content="CareerGoals (CG) answers one question: you studied a particular stream in Class 12 — which undergraduate courses can you pursue next? Explore 872 undergraduate programmes across 17 fields, with the Class 12 subjects each one requires.">
+<meta name="theme-color" content="#08151F">
+<link rel="preload" href="fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-normal-200-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="CareerGoals home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+          <path d="M17.6 7.1A7.2 7.2 0 1 0 17.6 16.9" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12.4 12h5.4" stroke="#7FA9D4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">CareerGoals<span class="brand-abbr">CG</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#streams">Your stream</a>
+      <a href="#catalogue">Courses</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#scope">Scope</a>
+    </nav>
+
+    <a class="btn btn-quiet nav-cta" href="#streams">Explore Courses</a>
+
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-3d" aria-hidden="true">
+    <div class="obj obj-cube">
+      <div class="face f1"></div><div class="face f2"></div><div class="face f3"></div>
+      <div class="face f4"></div><div class="face f5"></div><div class="face f6"></div>
+    </div>
+    <div class="obj obj-rings"><i></i><i></i><i></i><i></i></div>
+    <div class="obj obj-sphere"></div>
+    <div class="obj obj-pyramid"></div>
+    <div class="obj obj-plate"></div>
+  </div>
+
+  <div class="shell">
+    <div class="hero-inner">
+      <p class="eyebrow">Undergraduate course discovery · India</p>
+
+      <h1>Discover Every Course<br>Your Future <em>Can Hold</em></h1>
+
+      <p class="lede">
+        You finished Class 12 in a particular stream. This is the complete map of
+        undergraduate degrees that stream opens — traditional, professional,
+        technical, scientific, creative, multidisciplinary and vocational.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#streams">
+          Explore Courses
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn-quiet" href="#eligibility">How eligibility works</a>
+      </div>
+
+      <dl class="hero-stats">
+        <div><dt id="stat-courses">872</dt><dd>Courses mapped</dd></div>
+        <div><dt id="stat-fields">17</dt><dd>Fields of study</dd></div>
+        <div><dt>7</dt><dd>Class 12 streams</dd></div>
+        <div><dt>3</dt><dd>Eligibility types</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STREAMS ============================ -->
+<section class="streams" id="streams">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Step one</p>
+        <h2>Which group did you take in Class 12?</h2>
+      </div>
+      <p>
+        Pick your stream and the catalogue narrows to the courses you are actually
+        eligible for. Nothing is hidden — you can still browse every course in the
+        country afterwards.
+      </p>
+    </div>
+
+    <div class="stream-grid" id="stream-grid"></div>
+  </div>
+</section>
+
+<!-- ============================ CATALOGUE ============================ -->
+<section class="catalogue" id="catalogue">
+  <div class="shell">
+    <div class="cat-head reveal">
+      <div>
+        <p class="eyebrow eyebrow--dark">Step two</p>
+        <h2 id="cat-title">The course catalogue</h2>
+        <div class="cat-context" id="cat-context"></div>
+      </div>
+    </div>
+
+    <div class="controls reveal">
+      <div class="search-row">
+        <div class="search-field">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="8.6" cy="8.6" r="5.6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12.8 12.8L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input type="search" id="search" placeholder="Search a course, subject or field — try “nursing”, “design”, “statistics”" aria-label="Search courses" autocomplete="off">
+          <button class="search-clear" id="search-clear" aria-label="Clear search">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="sort-wrap">
+          <label for="sort">Sort</label>
+          <select class="select" id="sort">
+            <option value="curated">Curated order</option>
+            <option value="name">Name A–Z</option>
+            <option value="duration">Shortest first</option>
+            <option value="field">Field of study</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-label">Field</span>
+        <div class="chips" id="cat-chips"></div>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-label">Eligibility</span>
+        <div class="chips" id="req-chips"></div>
+      </div>
+    </div>
+
+    <div class="results-bar">
+      <p class="results-count" id="results-count"></p>
+      <p class="results-note" id="results-note"></p>
+    </div>
+
+    <div class="course-grid" id="course-grid"></div>
+
+    <div class="load-wrap" id="load-wrap" hidden>
+      <button class="load-more" id="load-more">
+        Show more courses <span id="load-remaining"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ELIGIBILITY ============================ -->
+<section class="eligibility" id="eligibility">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow eyebrow--dark">Reading the catalogue</p>
+        <h2>Three kinds of eligibility</h2>
+      </div>
+      <p>
+        Every course carries one of three markers. They tell you whether the
+        requirement is fixed, open, or set by the institution you apply to.
+      </p>
+    </div>
+
+    <div class="elig-grid">
+      <article class="elig-card reveal">
+        <span class="elig-tag elig-tag--mandatory">Subject required</span>
+        <h3>Mandatory subjects</h3>
+        <p>
+          The course requires specific Class 12 subjects, and no institution can
+          waive them. MBBS needs Biology, Physics and Chemistry. B.Tech needs
+          Mathematics, Physics and Chemistry. If you did not take those subjects,
+          the course is not open to you.
+        </p>
+      </article>
+
+      <article class="elig-card reveal">
+        <span class="elig-tag elig-tag--open">Open to all</span>
+        <h3>No subject requirement</h3>
+        <p>
+          The course sets no specific Class 12 subject requirement, so any
+          recognised stream can apply. Most language, humanities, law, management
+          and vocational degrees sit here. Institutions may still set their own
+          minimum marks.
+        </p>
+      </article>
+
+      <article class="elig-card reveal">
+        <span class="elig-tag elig-tag--varies">Varies by institution</span>
+        <h3>Set by the institution</h3>
+        <p>
+          The subject requirement genuinely differs between institutions and
+          programmes. BCA is the clearest example: many institutions require
+          Mathematics at Class 12, many do not. Always confirm with the
+          institution before you rely on it.
+        </p>
+      </article>
+    </div>
+
+    <p class="elig-note reveal">
+      <strong>On accuracy.</strong> These rules describe the standard national
+      position for each degree. They are not a substitute for an institution's own
+      published eligibility conditions, which can add minimum percentages, subject
+      combinations, age limits or their own assessments. Where a course is marked
+      <em>varies</em>, treat the institution's own statement as the only
+      authoritative one.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ SCOPE ============================ -->
+<section class="scope" id="scope">
+  <div class="shell">
+    <div class="scope-grid">
+      <div class="reveal">
+        <p class="eyebrow">What this is</p>
+        <h2>One question, answered properly.</h2>
+        <p>
+          CareerGoals exists to answer exactly one thing: <em>I studied this stream
+          in Class 12 — what undergraduate courses can I pursue next?</em> It is not
+          a college finder, not an entrance-exam guide and not a counselling
+          service. Everything on this page serves that single question.
+        </p>
+      </div>
+
+      <ul class="scope-list reveal">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Every course listed with its degree type, typical duration and the Class 12 subjects it requires.</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>No accounts, no sign-in, no personal information collected. The whole catalogue is open on arrival.</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>No colleges, rankings, entrance examinations, admission procedures, scholarships, fees or salary figures.</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Eligibility rules are stated as they are — and marked clearly where they differ between institutions.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <path d="M17.6 7.1A7.2 7.2 0 1 0 17.6 16.9" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12.4 12h5.4" stroke="#7FA9D4" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>CareerGoals</span>
+      </div>
+
+      <p class="footer-meta">
+        An undergraduate course-discovery reference for India. Eligibility
+        statements describe the standard national position; an institution's own
+        published conditions always take precedence.
+      </p>
+
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#streams">Your stream</a>
+        <a href="#catalogue">Courses</a>
+        <a href="#eligibility">Eligibility</a>
+      </nav>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<!-- ============================ MODAL ============================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-scrim" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" id="modal-close" aria-label="Close course details">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<noscript>
+  <div style="padding:40px;text-align:center;font-family:system-ui,sans-serif">
+    CareerGoals needs JavaScript to filter the course catalogue. Please enable it to explore the courses.
+  </div>
+</noscript>
+
+<script src="courses.js"></script>
+<script src="courses-extra.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var COURSES = window.CG.courses;
+  var STREAMS = window.CG.streams;
+  var PAGE = 24;
+
+  var state = { stream: null, q: '', cat: null, req: null, sort: 'curated', shown: PAGE };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------------- glyphs ---------------- */
+
+  var GLYPHS = {
+    orbit: '<circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.4"/><ellipse cx="12" cy="12" rx="9" ry="4.2" stroke="currentColor" stroke-width="1.2" transform="rotate(-28 12 12)"/>',
+    helix: '<path d="M8 3c0 4 8 4 8 8s-8 4-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M16 3c0 4-8 4-8 8s8 4 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9.4 7.4h5.2M9.4 16.6h5.2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>',
+    chart: '<path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    ledger: '<rect x="4.5" y="3.5" width="15" height="17" rx="1.4" stroke="currentColor" stroke-width="1.3"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
+    column: '<path d="M5 20h14M6.5 20V9M12 20V9M17.5 20V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4 9h16L12 3.5 4 9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>',
+    tool: '<path d="M14.5 4.2a4.2 4.2 0 0 0 5.3 5.3l-9.6 9.6a2.4 2.4 0 0 1-3.4-3.4l9.6-9.6a4.2 4.2 0 0 0-1.9-1.9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>',
+    prism: '<path d="M12 3.5L21 19H3L12 3.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M12 3.5V19" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 2.4"/>'
+  };
+
+  function glyph(name) {
+    return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      (GLYPHS[name] || GLYPHS.orbit) + '</svg>';
+  }
+
+  /* ---------------- helpers ---------------- */
+
+  function eligible(c) {
+    if (!state.stream) return true;
+    return c.streams.indexOf('all') > -1 || c.streams.indexOf(state.stream) > -1;
+  }
+
+  function matchesQuery(c, q) {
+    if (!q) return true;
+    var hay = (c.name + ' ' + c.short + ' ' + c.category + ' ' + c.description + ' ' + c.subjects + ' ' + c.degree).toLowerCase();
+    return q.split(/\s+/).every(function (t) { return hay.indexOf(t) > -1; });
+  }
+
+  function streamName(id) {
+    var s = STREAMS.filter(function (x) { return x.id === id; })[0];
+    return s ? s.name : id;
+  }
+
+  function reqLabel(r) {
+    return r === 'mandatory' ? 'Subject required' : r === 'open' ? 'Open to all' : 'Varies by institution';
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  /* ---------------- streams ---------------- */
+
+  function renderStreams() {
+    var html = STREAMS.map(function (s) {
+      var n = COURSES.filter(function (c) {
+        return c.streams.indexOf('all') > -1 || c.streams.indexOf(s.id) > -1;
+      }).length;
+      return '<button class="stream-card" data-stream="' + s.id + '" aria-pressed="false">' +
+        '<span class="stream-glyph">' + glyph(s.glyph) + '</span>' +
+        '<span class="stream-name">' + esc(s.name) + '</span>' +
+        '<span class="stream-full">' + esc(s.full) + '</span>' +
+        '<span class="stream-blurb">' + esc(s.blurb) + '</span>' +
+        '<span class="stream-foot">' +
+          '<span class="stream-count">' + n + ' courses</span>' +
+          '<span class="stream-arrow"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+        '</span>' +
+      '</button>';
+    }).join('');
+    $('stream-grid').innerHTML = html;
+  }
+
+  /* ---------------- filters ---------------- */
+
+  function renderCatChips() {
+    var base = COURSES.filter(function (c) { return eligible(c) && matchesQuery(c, state.q); });
+    var counts = {};
+    base.forEach(function (c) { counts[c.category] = (counts[c.category] || 0) + 1; });
+
+    var cats = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+
+    var html = '<button class="chip' + (state.cat === null ? ' is-on' : '') + '" data-cat="">All fields <span class="chip-n">' + base.length + '</span></button>';
+    html += cats.map(function (k) {
+      return '<button class="chip' + (state.cat === k ? ' is-on' : '') + '" data-cat="' + esc(k) + '">' +
+        esc(k) + ' <span class="chip-n">' + counts[k] + '</span></button>';
+    }).join('');
+
+    $('cat-chips').innerHTML = html;
+  }
+
+  function renderReqChips() {
+    var base = COURSES.filter(function (c) {
+      return eligible(c) && matchesQuery(c, state.q) && (!state.cat || c.category === state.cat);
+    });
+    var counts = { mandatory: 0, open: 0, varies: 0 };
+    base.forEach(function (c) { counts[c.requirement] = (counts[c.requirement] || 0) + 1; });
+
+    var defs = [
+      { id: '', label: 'Any' },
+      { id: 'mandatory', label: 'Subject required' },
+      { id: 'open', label: 'Open to all' },
+      { id: 'varies', label: 'Varies' }
+    ];
+
+    $('req-chips').innerHTML = defs.map(function (d) {
+      var n = d.id ? counts[d.id] : base.length;
+      return '<button class="chip' + (state.req === (d.id || null) ? ' is-on' : '') + '" data-req="' + d.id + '">' +
+        d.label + ' <span class="chip-n">' + n + '</span></button>';
+    }).join('');
+  }
+
+  /* ---------------- results ---------------- */
+
+  function currentList() {
+    var list = COURSES.filter(function (c) {
+      return eligible(c) && matchesQuery(c, state.q) &&
+        (!state.cat || c.category === state.cat) &&
+        (!state.req || c.requirement === state.req);
+    });
+
+    if (state.sort === 'name') {
+      list.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    } else if (state.sort === 'duration') {
+      list.sort(function (a, b) { return parseFloat(a.duration) - parseFloat(b.duration) || a.name.localeCompare(b.name); });
+    } else if (state.sort === 'field') {
+      list.sort(function (a, b) { return a.category.localeCompare(b.category) || a.name.localeCompare(b.name); });
+    }
+    return list;
+  }
+
+  function cardHTML(c) {
+    var meta = c.degree.replace(/\s*\(.*\)$/, '');
+    return '<article class="course-card" data-id="' + c.id + '" tabindex="0" role="button" aria-label="' + esc(c.name) + ' — view details">' +
+      '<div class="cc-top">' +
+        '<span class="cc-cat">' + esc(c.category) + '</span>' +
+        '<span class="cc-req cc-req--' + c.requirement + '">' + reqLabel(c.requirement) + '</span>' +
+      '</div>' +
+      '<h3 class="cc-name">' + esc(c.name) + '</h3>' +
+      '<p class="cc-desc">' + esc(c.description) + '</p>' +
+      '<div class="cc-foot">' +
+        '<span class="cc-meta"><span>' + esc(meta) + '</span><i class="cc-dot"></i><span>' + esc(c.duration.split('·')[0].trim()) + '</span></span>' +
+        '<span class="cc-open">Details <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function render() {
+    var list = currentList();
+    var shown = list.slice(0, state.shown);
+
+    var grid = $('course-grid');
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty">' +
+        '<h3>No course matches that combination</h3>' +
+        '<p>Try a broader search term, or clear the field and eligibility filters to see the full catalogue again.</p>' +
+        '<button class="btn btn-dark" id="reset-filters">Reset all filters</button>' +
+      '</div>';
+    } else {
+      grid.innerHTML = shown.map(cardHTML).join('');
+    }
+
+    $('results-count').innerHTML = '<strong>' + list.length + '</strong> ' +
+      (list.length === 1 ? 'course' : 'courses') +
+      (state.stream ? ' open to ' + esc(streamName(state.stream)) : ' across all streams');
+
+    var note = '';
+    if (state.stream) {
+      note = 'Filtered to your Class 12 group';
+    } else {
+      note = 'Showing every stream — pick your group above to narrow this';
+    }
+    $('results-note').textContent = note;
+
+    var wrap = $('load-wrap');
+    if (list.length > state.shown) {
+      wrap.hidden = false;
+      $('load-remaining').textContent = '· ' + (list.length - state.shown) + ' more';
+    } else {
+      wrap.hidden = true;
+    }
+
+    renderCatChips();
+    renderReqChips();
+    renderContext();
+    observeCards();
+  }
+
+  function renderContext() {
+    var el = $('cat-context');
+    if (!state.stream) {
+      el.innerHTML = '<span>All seven streams · ' + COURSES.length + ' courses</span>';
+      return;
+    }
+    var s = STREAMS.filter(function (x) { return x.id === state.stream; })[0];
+    el.innerHTML = '<span class="context-pill">' + esc(s.name) + '</span>' +
+      '<span>' + esc(s.full) + '</span>' +
+      '<button class="context-clear" id="clear-stream">Change stream</button>';
+  }
+
+  /* ---------------- modal ---------------- */
+
+  var lastFocus = null;
+
+  function openModal(id) {
+    var c = COURSES.filter(function (x) { return x.id === id; })[0];
+    if (!c) return;
+
+    var streamTags = c.streams.indexOf('all') > -1
+      ? '<span class="stream-tag stream-tag--all">All streams</span>'
+      : c.streams.map(function (s) { return '<span class="stream-tag">' + esc(streamName(s)) + '</span>'; }).join('');
+
+    var noteHTML = c.note
+      ? '<p class="modal-note"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v4M8 4.9v.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>' + esc(c.note) + '</span></p>'
+      : '';
+
+    $('modal-body').innerHTML =
+      '<h2 class="modal-title" id="modal-title">' + esc(c.name) + '</h2>' +
+      '<p class="modal-desc">' + esc(c.description) + '</p>' +
+
+      '<dl class="modal-facts">' +
+        '<div class="fact"><dt>Degree type</dt><dd>' + esc(c.degree) + '</dd></div>' +
+        '<div class="fact"><dt>Typical duration</dt><dd>' + esc(c.duration) + '</dd></div>' +
+      '</dl>' +
+
+      '<div class="modal-req">' +
+        '<div class="modal-req-head">' +
+          '<span class="cc-req cc-req--' + c.requirement + '">' + reqLabel(c.requirement) + '</span>' +
+          '<h4>Class 12 requirement</h4>' +
+        '</div>' +
+        '<p>' + esc(c.subjects) + '</p>' +
+        noteHTML +
+      '</div>' +
+
+      '<div class="modal-streams">' +
+        '<h4>Eligible Class 12 streams</h4>' +
+        '<div class="stream-tags">' + streamTags + '</div>' +
+      '</div>';
+
+    lastFocus = document.activeElement;
+    var m = $('modal');
+    m.classList.add('is-open');
+    m.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    $('modal-close').focus();
+  }
+
+  function closeModal() {
+    var m = $('modal');
+    m.classList.remove('is-open');
+    m.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  /* ---------------- reveal + tilt ---------------- */
+
+  var io = null;
+  if ('IntersectionObserver' in window) {
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  }
+
+  function observeCards() {
+    var els = document.querySelectorAll('.reveal:not(.is-in)');
+    if (!io) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+    els.forEach(function (e) { io.observe(e); });
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function tilt(el, max) {
+    if (reduce || !fine) return;
+    el.addEventListener('mousemove', function (ev) {
+      var r = el.getBoundingClientRect();
+      var px = (ev.clientX - r.left) / r.width - 0.5;
+      var py = (ev.clientY - r.top) / r.height - 0.5;
+      el.style.transform = 'perspective(900px) rotateY(' + (px * max).toFixed(2) + 'deg) rotateX(' + (-py * max).toFixed(2) + 'deg) translateY(-3px)';
+    });
+    el.addEventListener('mouseleave', function () { el.style.transform = ''; });
+  }
+
+  /* ---------------- events ---------------- */
+
+  document.addEventListener('click', function (ev) {
+    var t = ev.target;
+
+    var streamBtn = t.closest ? t.closest('[data-stream]') : null;
+    if (streamBtn) {
+      var id = streamBtn.getAttribute('data-stream');
+      state.stream = (state.stream === id) ? null : id;
+      state.shown = PAGE;
+      document.querySelectorAll('[data-stream]').forEach(function (b) {
+        var on = b.getAttribute('data-stream') === state.stream;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      render();
+      var cat = $('catalogue');
+      if (cat) cat.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+
+    var clearStream = t.closest ? t.closest('#clear-stream') : null;
+    if (clearStream) {
+      state.stream = null;
+      state.shown = PAGE;
+      document.querySelectorAll('[data-stream]').forEach(function (b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      render();
+      $('streams').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+
+    var catChip = t.closest ? t.closest('[data-cat]') : null;
+    if (catChip) {
+      var v = catChip.getAttribute('data-cat');
+      state.cat = v ? v : null;
+      state.shown = PAGE;
+      render();
+      return;
+    }
+
+    var reqChip = t.closest ? t.closest('[data-req]') : null;
+    if (reqChip) {
+      var rv = reqChip.getAttribute('data-req');
+      state.req = rv ? rv : null;
+      state.shown = PAGE;
+      render();
+      return;
+    }
+
+    var reset = t.closest ? t.closest('#reset-filters') : null;
+    if (reset) {
+      state.q = ''; state.cat = null; state.req = null; state.shown = PAGE;
+      $('search').value = '';
+      $('search-clear').classList.remove('is-on');
+      render();
+      return;
+    }
+
+    var card = t.closest ? t.closest('.course-card') : null;
+    if (card) { openModal(card.getAttribute('data-id')); return; }
+
+    if (t.closest && t.closest('[data-close]')) { closeModal(); return; }
+    if (t.id === 'modal-close') { closeModal(); return; }
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && $('modal').classList.contains('is-open')) closeModal();
+    if ((ev.key === 'Enter' || ev.key === ' ') && document.activeElement && document.activeElement.classList.contains('course-card')) {
+      ev.preventDefault();
+      openModal(document.activeElement.getAttribute('data-id'));
+    }
+  });
+
+  var searchTimer = null;
+  $('search').addEventListener('input', function (ev) {
+    var v = ev.target.value;
+    $('search-clear').classList.toggle('is-on', v.length > 0);
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+      state.q = v.trim().toLowerCase();
+      state.shown = PAGE;
+      render();
+    }, 130);
+  });
+
+  $('search-clear').addEventListener('click', function () {
+    $('search').value = '';
+    $('search-clear').classList.remove('is-on');
+    state.q = '';
+    state.shown = PAGE;
+    render();
+    $('search').focus();
+  });
+
+  $('sort').addEventListener('change', function (ev) {
+    state.sort = ev.target.value;
+    state.shown = PAGE;
+    render();
+  });
+
+  $('load-more').addEventListener('click', function () {
+    state.shown += PAGE;
+    render();
+  });
+
+  $('burger').addEventListener('click', function () {
+    var open = document.body.classList.toggle('menu-open');
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var links = document.querySelector('.nav-links');
+    if (open) {
+      links.style.display = 'flex';
+      links.style.position = 'absolute';
+      links.style.top = '76px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.flexDirection = 'column';
+      links.style.alignItems = 'flex-start';
+      links.style.gap = '0';
+      links.style.padding = '8px 20px 20px';
+      links.style.background = 'rgba(8,21,31,0.98)';
+      links.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      Array.prototype.forEach.call(links.children, function (a) {
+        a.style.padding = '14px 0';
+        a.style.width = '100%';
+        a.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+      });
+    } else {
+      links.style.display = '';
+    }
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (document.body.classList.contains('menu-open')) {
+        document.body.classList.remove('menu-open');
+        document.querySelector('.nav-links').style.display = '';
+        $('burger').setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  var nav = $('nav');
+  function onScroll() {
+    nav.classList.toggle('is-solid', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------------- boot ---------------- */
+
+  $('stat-courses').textContent = COURSES.length;
+  $('stat-fields').textContent = Object.keys(COURSES.reduce(function (a, c) { a[c.category] = 1; return a; }, {})).length;
+
+  renderStreams();
+  render();
+  observeCards();
+
+  document.querySelectorAll('.stream-card').forEach(function (el) { tilt(el, 5); });
+  document.querySelectorAll('.elig-card').forEach(function (el) { tilt(el, 3); });
+
+  var gridEl = $('course-grid');
+  gridEl.addEventListener('mouseover', function (ev) {
+    var card = ev.target.closest ? ev.target.closest('.course-card') : null;
+    if (card && !card.dataset.tilted) { card.dataset.tilted = '1'; tilt(card, 3.5); }
+  });
+})();
+</script>
+</body>
+</html>
